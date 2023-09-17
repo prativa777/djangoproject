@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp',
     'tem_inheritance',
+    'tables',
 ]
 
 MIDDLEWARE = [
