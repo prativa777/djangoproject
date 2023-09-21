@@ -1,0 +1,35 @@
+{% extends 'tem_inheritance/base.html' %}
+
+{% block content %}
+
+<table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">Bio</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Roll No</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for student in students %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ student.name }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.address }}</td>
+      <td>{{ student.bio }}</td>
+      <td>{{ student.studentprofile.contact }}</td>
+      <!-- studentprofile here is a related name -->
+      <td>{{ student.studentprofile.roll_no }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

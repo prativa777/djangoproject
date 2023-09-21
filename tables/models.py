@@ -27,3 +27,18 @@ class Product (models.Model):
 
     def __str__(self):
         return self.name
+    
+
+class StudentProfile(models.Model):
+    student=models.OneToOneField(Student, on_delete=models.CASCADE)
+    contact=models.CharField(max_length=100)
+    roll_no=models.IntegerField()
+
+
+class ProductDetail(models.Model):
+    product=models.OneToOneField(Product, on_delete=models.CASCADE)
+    brand=models.CharField(max_length=50)
+    quality=models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.brand
