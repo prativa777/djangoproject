@@ -3,12 +3,17 @@ from django.db import models
 # Create your models here.
 # database tabels = models in django
 
+class ClassRoom (models.Model):
+    name= models.CharField(max_length=20)
+
 class Student (models.Model):
     name= models.CharField(max_length=20)
     email= models.EmailField()
     age=models.IntegerField()
     address=models.CharField(max_length=20)
     bio=models.TextField()
+    classroom = models.ForeignKey(ClassRoom, on_delete=models.CASCADE, 
+                                  related_name="classroom_students", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -42,3 +47,16 @@ class ProductDetail(models.Model):
 
     def __str__(self):
         return self.brand
+    
+class Publication(models.Model):
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
+    
+class Article(models.Model):
+    headline=models.CharField(max_length=20)
+    publication = models.ManyToManyField(Publication)
+
+    def __str__(self):
+        return self.headline

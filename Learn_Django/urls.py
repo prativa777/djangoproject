@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('inherit/', include("tem_inheritance.urls")),
     path('tables/', include("tables.urls")),
+    path('forms/', include('forms.urls')),
     path('', include("myapp.urls")),
 
 ]

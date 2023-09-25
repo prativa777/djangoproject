@@ -38,10 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
-    'tem_inheritance',
-    'tables',
 ]
+
+PROJECT_APPS = [
+    'myapp', 'tem_inheritance', 'tables', 'forms'
+]
+
+THIRD_PARTY_APPS = [
+    'django_extensions'
+]
+
+INSTALLED_APPS += PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,6 +90,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 
+#         'NAME':
+#         'USER':
+#         'PASSWORD':
+#         'HOST':
+#         'POST'
+#     }
+# }
 
 
 # Password validation
