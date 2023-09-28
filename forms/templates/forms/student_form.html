@@ -2,7 +2,8 @@
 
 {% block content %}
 
-<form class="row g-3">
+<form class="row g-3" method="post" action="{% url 'student-view' %}">
+    {% csrf_token %}
     <div class="col-md-6">
         <label for="name" class="form-label">Name</label>
         <input type="text" class="form-control" id="inputEmail4" name="name">
@@ -17,13 +18,13 @@
     </div>
     <div class="col-12">
         <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
     </div>
     <div class="col-12">
         <label for="inputAddress2" class="form-label">Bio</label>
-        <textarea name="text" id="inputBio" cols="30" rows="10" name="bio"></textarea>
+        <input type="text" name="bio" id="inputAddress2">
     </div>
-    
+
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>

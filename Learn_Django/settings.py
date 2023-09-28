@@ -41,7 +41,7 @@ INSTALLED_APPS = [
 ]
 
 PROJECT_APPS = [
-    'myapp', 'tem_inheritance', 'tables', 'forms'
+    'myapp', 'tem_inheritance', 'tables', 'forms', 'crud',
 ]
 
 THIRD_PARTY_APPS = [

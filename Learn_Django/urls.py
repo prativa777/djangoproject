@@ -24,6 +24,7 @@ urlpatterns = [
     path('inherit/', include("tem_inheritance.urls")),
     path('tables/', include("tables.urls")),
     path('forms/', include('forms.urls')),
+    path('', include('crud.urls')),
     path('', include("myapp.urls")),
 
 ]

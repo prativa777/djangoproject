@@ -1,0 +1,40 @@
+{% extends 'crud/base.html' %}
+
+{% block content %}
+
+<h1 style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">Classroom</h1>
+
+<a style="float: right;" class="btn btn-primary" href="#">Student</a>
+
+<form method="post" action="{% url 'crud-classroom' %}">
+    {% csrf_token %}
+    <label for="name" style="font-size: large;"><b>Enter the name of the class:</b></label> <br>
+    <input type="text" style="width: 40%;" name="name" id="name" placeholder="name of classroom"> <br> <br>
+    <button class="btn btn-success" type="submit">Submit</button>
+
+</form>
+
+<br><br>
+<table class="table table-bordered border-primary">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for class in classrooms %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ class.name }}</td>
+        <td>
+            <a href="{% url 'classroom_update' class.id %}" class="btn btn-primary">Update</a>
+            <a href="{% url 'classroom_delete' class.id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

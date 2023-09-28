@@ -1,0 +1,32 @@
+{% extends 'tem_inheritance/base.html' %}
+
+{% block content %}
+{% load static %}
+
+<img src="{% static 'gadgets.webp' %}" alt="" style="height: 400px; width: 75%;">
+<h4>Product Form</h4>
+<div class="container">
+    <form class="row gy-2 gx-3 align-items-center" method="post" accept="{% url 'product-view' %}">
+        {% csrf_token %}
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingInput">Product Name</label>
+            <input type="text" class="form-control" id="autoSizingInput" name="name" placeholder="name of the product">
+        </div>
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingInput">Price</label>
+            <input type="number" class="form-control" id="autoSizingInput" name="price" placeholder="price of the product">
+        </div>
+        <div class="col-auto">
+            <label class="visually-hidden" for="autoSizingInput">Description</label>
+            <input type="text" class="form-control" id="autoSizingInput" name="description" placeholder="description of the product">
+        </div>
+        
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+
+{% endblock %}
