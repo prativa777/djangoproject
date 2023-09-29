@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import ClassRoom
+from .models import ClassRoom, Student, StudentProfile
 
 # Create your views here.
 def crud_classroom(request):
@@ -26,3 +26,18 @@ def classroom_update(request,id):
         return redirect('crud-classroom')
     return render(request, template_name='crud/classroom_update.html', context={'classroom': classroom})
 
+def crud_student(request):
+    students = Student.objects.all()
+    return render(request, template_name='crud/student.html', context={'students':students})
+
+def add_student(request):
+    if request.method=='POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        age = request.POST.get('age')
+        address = request.POST.get('address')
+        contact = request.POST.get('contact')
+        student = Student.objects.create(name=name, email=email, age=age, classroom_id=6)
+        StudentProfile.objects.create(address=address, contact=contact, student=student)
+        return redirect('crud_student')
+    return render(request, template_name='crud/add_student.html', context={'title':"Add Student"})

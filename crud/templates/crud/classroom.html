@@ -4,7 +4,7 @@
 
 <h1 style="font-family: Georgia, 'Times New Roman', Times, serif; text-align: center;">Classroom</h1>
 
-<a style="float: right;" class="btn btn-primary" href="#">Student</a>
+<a style="float: right;" class="btn btn-primary" href="{% url 'crud_student' %}">Student</a>
 
 <form method="post" action="{% url 'crud-classroom' %}">
     {% csrf_token %}
