@@ -1,0 +1,65 @@
+{% extends 'crud/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-align: center;">{{ title }}</h1>
+<br>
+<hr> <br>
+<form method="post" action="{% url 'update_student' student.id %}" enctype="multipart/form-data">
+
+    <div class="row">
+        <div class="col-md-4">
+            {% if student.profile_picture %}
+            <img src="{{ student.profile_picture.url }}" style="height: 250px; width: 150px;">
+            {% else %}
+            <img src="{% static 'crud/pp.png' %}" style="height: 250px; width: 150px;">
+            {% endif %}
+            <input type="file" name="pp" class="form-control">
+        </div>
+        <div class="col-md-8">
+            {% csrf_token %}
+
+            <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}">
+            </div> <br>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}">
+            </div> <br>
+            <div class="col-md-6">
+                <label for="age" class="form-label">Age</label>
+                <input type="number" class="form-control" id="age" name="age" value="{{ student.age }}">
+            </div> <br>
+            <div class="col-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St"
+                    value="{{student.studentprofile.address }}">
+            </div> <br>
+            <div class="col-12">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" class="form-control" name="contact" id="contact"
+                    value="{{ student.studentprofile.contact }}">
+            </div> <br>
+            <!-- <div class="col-md-6">
+        <label for="ppicture" class="form-label">Profile Picture</label>
+        <input type="file" class="form-control" name="pp" id="ppicture">
+    </div> -->
+            <!-- <div class="col-md-4">
+        <label for="inputState" class="form-label"> ClassRoom </label>
+        <select id="inputState" class="form-select" name="classroom_name">
+            {% for classroom in classrooms %}
+            <option selected>{{ classroom.name }}</option>
+            {% endfor %}
+        </select>
+    </div> -->
+            <button type="submit" class="btn btn-success">Update</button>
+            <a href="{% url 'crud_student' %}" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

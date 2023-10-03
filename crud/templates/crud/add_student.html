@@ -8,7 +8,7 @@
 </h1> <br><br>
 <hr> <br>
 
-<form class="row g-3" method="post" action="{% url 'add_student' %}">
+<form class="row g-3" method="post" action="{% url 'add_student' %}" enctype="multipart/form-data">
 
     {% csrf_token %}
 
@@ -32,17 +32,18 @@
         <label for="contact" class="form-label">Contact</label>
         <input type="text" class="form-control" name="contact" id="contact">
     </div>
-    <!-- <div class="col-md-6">
+    <div class="col-md-6">
         <label for="ppicture" class="form-label">Profile Picture</label>
         <input type="file" class="form-control" name="pp" id="ppicture">
-    </div> -->
-    <!-- <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-            <option selected>Choose...</option>
-            <option>...</option>
+    </div>
+    <div class="col-md-4">
+        <label for="inputState" class="form-label"> ClassRoom </label>
+        <select id="inputState" class="form-select" name="classroom_name">
+            {% for classroom in classrooms %}
+            <option selected>{{ classroom.name }}</option>
+            {% endfor %}
         </select>
-    </div> -->
+    </div>
 
     <div class="col-12">
         <button type="submit" class="btn btn-success">Submit</button>

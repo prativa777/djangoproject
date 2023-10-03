@@ -1,0 +1,45 @@
+{% extends 'crud/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    p{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: large;
+    }
+</style>
+
+<h1>{{ title }}</h1> <br> <hr>
+
+<a href="{% url 'crud_student' %}" style="float: right;" class="btn btn-primary">Student</a> <br><br>
+
+<div class="row">
+    <div class="col-md-4">
+        {% if student.studentprofile.profile_picture %}
+
+        <img src="{{ student.studentprofile.profile_picture.url }}" 
+        style="height: 200px; width: 150px;">
+
+        {% else %}
+
+        <img src="{% static 'crud/pp.png' %}" style="height: 200px; width: 150px;">
+
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <p>Name: {{ student.name }}</p>
+        <p>Email: {{ student.email }}</p>
+        <p>Age: {{ student.age }}</p>
+        <p>Classroom: {{ student.classroom.name }}</p>
+        {% if student.studentprofile %}
+            <p>Address: {{ student.studentprofile.address }}</p>
+            <p>Contact: {{ student.studentprofile.contact }}</p>
+        {% else %}
+            <p>Address: N/A</p>
+            <p>Contact: N/A</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
